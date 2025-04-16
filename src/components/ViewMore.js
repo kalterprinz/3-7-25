@@ -95,7 +95,7 @@ const ViewMore = () => {
     }
   
     try {
-      const response = await fetch(`http://192.168.1.32:3001/getdriverfromrecords/${encodeURIComponent(record.email)}`);
+      const response = await fetch(`http://192.168.43.245:3001/getdriverfromrecords/${encodeURIComponent(record.email)}`);
       if (!response.ok) throw new Error("Driver not found");
 
       const driver = await response.json();
@@ -1710,7 +1710,7 @@ const ViewMore = () => {
   useEffect(() => {
     const fetchSignature = async () => {
       try {
-        const response = await fetch(`http://192.168.1.32:3001/getSignature/${record._id}`);
+        const response = await fetch(`http://192.168.43.245:3001/getSignature/${record._id}`);
         console.log("id value",record._id)
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);

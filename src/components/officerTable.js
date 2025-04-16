@@ -43,7 +43,7 @@ const OfficerTable = () => {
   
         if (driverId) {
           // Check if driverId exists in the drivers' database
-          const driverResponse = await fetch(`http://192.168.1.32:3001/getDriverById2/${driverId}`);
+          const driverResponse = await fetch(`http://192.168.43.245:3001/getDriverById2/${driverId}`);
           if (driverResponse.ok) {
               console.log(`Driver found with id ${driverId}.`);
               navigate('/');
@@ -51,7 +51,7 @@ const OfficerTable = () => {
           }
   
           // If not found in drivers, check in officers' database
-          const officerResponse = await fetch(`http://192.168.1.32:3001/getOfficerById/${driverId}`);
+          const officerResponse = await fetch(`http://192.168.43.245:3001/getOfficerById/${driverId}`);
           if (officerResponse.ok) {
             const officerData = await officerResponse.json();
             // Navigate based on officer's role
@@ -101,11 +101,11 @@ const OfficerTable = () => {
       if (!driverId) return;
   
       // Get admin info
-      const adminRes = await axios.get(`http://192.168.1.32:3001/getOfficerById/${driverId}`);
+      const adminRes = await axios.get(`http://192.168.43.245:3001/getOfficerById/${driverId}`);
       const agency = adminRes.data.agency;
   
       // Get officers from the same agency
-      const officersRes = await axios.get("http://192.168.1.32:3001/getOfficer");
+      const officersRes = await axios.get("http://192.168.43.245:3001/getOfficer");
       const filtered = officersRes.data.filter(officer => officer.agency === agency);
       setOfficers(filtered);
     } catch (error) {
@@ -128,7 +128,7 @@ const OfficerTable = () => {
   // 2. Delete an officer
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://192.168.1.32:3001/deleteOfficer/${id}`);
+      await axios.delete(`http://192.168.43.245:3001/deleteOfficer/${id}`);
       setOfficers((prevOfficers) => prevOfficers.filter((record) => record._id !== id));
       alert("Record deleted successfully!");
     } catch (error) {
@@ -162,7 +162,7 @@ const OfficerTable = () => {
         console.log(`${key}: ${value}`);
       }
 
-      const response = await axios.post("http://192.168.1.32:3001/addOfficer", formData, {
+      const response = await axios.post("http://192.168.43.245:3001/addOfficer", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -226,7 +226,7 @@ const OfficerTable = () => {
   
     try {
       const response = await axios.put(
-        `http://192.168.1.32:3001/editOfficer/${selectedData._id}`,
+        `http://192.168.43.245:3001/editOfficer/${selectedData._id}`,
         updatedData, // Sending the updated form data
         {
           headers: {
@@ -339,7 +339,7 @@ const OfficerTable = () => {
   
     try {
       // Send a PUT request to update the duty status.
-      const response = await axios.put(`http://192.168.1.32:3001/updateOfficerDutyStatus/${id}`, {
+      const response = await axios.put(`http://192.168.43.245:3001/updateOfficerDutyStatus/${id}`, {
         dutyStatus: newStatus,
       });
   

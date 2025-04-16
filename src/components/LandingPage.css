@@ -31,7 +31,7 @@ body {
     font-weight: bold;
   }
 
-  .title{
+  .titlel1{
 	text-align: left;
 	margin-left: 5%;
 	color: #05223e;
@@ -260,6 +260,9 @@ body {
     gap: 20px;
     margin-left: 10px;
     margin-right: 75px;
+    justify-content: space-around;
+    gap: 30px;
+
   }
   
   .about-box {
@@ -375,7 +378,7 @@ body {
     background-color: #f8f9fa;
     justify-content: center;
   }
-  .features-intro {
+  .feat-intro {
     background-color: #f8f9fa;
     padding: 1.5rem 2rem;
     border-radius: 12px;
@@ -388,16 +391,32 @@ body {
     margin-right: auto;
   }
   
-  .features-intro p {
+  .feat-intro p {
     margin-bottom: 0px;
   }
   
-  .features-source {
+  .feat-source {
     font-style: italic;
     font-size: 0.95rem;
     color: #555;
   }
-  
+  .feat-grid {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 40px;
+    background-color: #f8f9fa;
+
+  }
+  .feat-card1 {
+    background: #fff;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    width: 600px;
+    height: 650px;
+    
+  }
   .features-grid {
     display: flex;
     justify-content: center;
@@ -430,15 +449,24 @@ body {
     font-size: 15px;
   }
   
+  .feat {
+    padding: 20px 0px;
+    background-color: #f8f9fa;
+    ;
+    justify-content: center;
+  }
   .features1 {
     padding: 20px;
     background-color: #f8f9fa;
     justify-content: center;
   }
-  .features1 h2 {
-    padding: 20px;
-    background-color: #f8f9fa;
+  .feat h2 {
+    margin: 20px 0px 20px 70px;
+    color: #373737;
     text-align: center;
+    border-bottom: 2px solid #ccc;
+    font-size: 28px;
+    width: 90%;
   }
   /* .section-divider {
     width: 100%;
@@ -468,7 +496,7 @@ body {
     font-size: 28px;
     width: 90%;
   }
-  .feature-card1 ul {
+  .feat-card1 ul {
     list-style: none;
     padding-left: 0;
     margin: 0;
@@ -479,7 +507,7 @@ body {
     font-size: 12px;
   }
   
-  .feature-card1 ul li {
+  .feat-card1 ul li {
     display: flex;
     justify-content: space-between;
     padding: 0px 15px 10px;
@@ -550,27 +578,28 @@ body {
     flex-direction: column;
     padding: 10px 0;
     width: -webkit-fill-available;
-    height: 30px;
+    height: 25px;
   }
 
   .logoheader1 img {
     position: absolute; /* or fixed */
-    top: 5px;  /* adjust this value if needed */
-    left: 10px; /* adjust this value if needed */
+    top: 4px;  /* adjust this value if needed */
+    left: 8px; /* adjust this value if needed */
     width: 35px;
     height: 35px;
   }
 
-  .title {
+  .titlel1{
     font-size: 10px;
     position: absolute;
-    top: 0px; /* Adjust for better alignment with the logo */
+    top: 4px; /* Adjust for better alignment with the logo */
     left: -40px; /* Adjust based on the logo's size and desired spacing */
     color: #05223e; /* Make sure it contrasts well on mobile */
     justify-content: center;
     align-items:flex-end ;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
+    margin-left: 87px;
   }
 
   .navlan {
@@ -578,7 +607,7 @@ body {
     flex-direction: row; /* Stack items vertically */
     justify-content: flex-start; /* Align items at the top */
     width: 30%; /* Ensure the nav takes full width */
-    margin-right: -50px;
+    margin-right: -150px;
     gap: 0;
     align-items: flex-start ;
     /* align-items: center; Center the navigation items */
@@ -587,19 +616,23 @@ body {
   
   .navlan button {
     margin-bottom: 8px;
-    font-size: 10px;
+    font-size: 8px;
     margin-right: 0;
+    margin-top: 4px;
+    width: 18px;
   }
 
   .navlan a {
-    font-size: 10px;
+    font-size: 8px;
+    margin-left: 15px;
   }
   .navlan .login-button {
-    width: 25%;
+    width: 30%;
     text-align: center;
     padding: 5px;
     padding-bottom: 5px;
     font-size: 12px;
+    margin-left: 30px;
   }
 
   /* Hero */
@@ -669,6 +702,8 @@ body {
 
   .about-container {
     flex-direction: column; /* stack vertically */
+    width: -webkit-fill-available;
+
   }
 
   .left-section {
@@ -686,19 +721,16 @@ body {
   }
   .right-section {
     order: 2;
-    width: 50px; /* Adjusted width */
+    width: -webkit-fill-available;    /* Adjusted width */
     padding: 10px;
 }
 .about-box-container {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-left: 0;
-  margin-right: 0;
-  width: 300px;
-  height: 300px; /* Let it grow based on content */
+  flex-wrap: nowrap;
+  margin-right: 0;width: 309px;
+  max-width: 471px;
+  height: 100px;
 }
 
 .about-box {
@@ -706,8 +738,9 @@ body {
   flex-direction: column; /* Stack image and text vertically */
   align-items: center;
   text-align: center;
-  width: calc(33.33% - 10px); /* 3 cards per row, accounting for gap */
+  width: 100px;
   height: 140px;
+  margin-left: -30px;
   box-sizing: border-box;
   padding: 10px;
   background-color: #f5f5f5; /* optional for visibility */
@@ -759,13 +792,25 @@ body {
 
   /* Features Section */
   .features {
-    width:370px;
+    width:-webkit-fill-available;
+    margin-top:40px;
+  }
+  .feat {
+    width:-webkit-fill-available;
+    margin-top:460px;
+  }
+  .feat h2 {
+    font-size: 14px;
+    margin-top: 100px;
+    text-align:center;
+    margin: -570px 18px 20px 18px ;
   }
   .features h2 {
     font-size: 14px;
     text-align:center;
     margin: -5px 18px 20px 18px ;
   }
+  
   /* .section-divider {
     width: 100%;
     height: 2px;
@@ -773,28 +818,64 @@ body {
     margin: 10px 0 20px 0; 
   } */
   
-  
-  .features-grid {
+  .feat-grid {
+    display: flex;
     flex-direction: row;
+    flex-wrap: wrap; /* allow wrapping on small screens */
     align-items: center;
-    width: 100px;
-    height: 100px;
-    margin-left: 125px;
-    margin-bottom: 1000px;
+    justify-content: center; /* center cards horizontally */
+    width: 100%;
+    margin-top: 10px;
+    height: auto; /* let content define height */
+    gap: 0;
+    /* margin-bottom: 100px; reduce excessive margin */
   }
-
+  .feat-card1 {
+    width: 100%; /* take nearly half the screen on mobile */
+    max-width: 315px; /* limit max width for larger screens */
+    height: 560px;
+    margin: 10px; /* spacing between cards */
+    margin-top: 40px;
+  }
+  .feat-card1 h3 {
+    font-size: 20px;
+  }
+  .feat-card1 ul li {
+    font-size: 10px;
+  }
+  .feat-intro {
+    font-size: 12px;
+  }
+  .feat-intro p {
+    font-size: 11px;
+  }
+  .features-grid {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap; /* allow wrapping on small screens */
+    align-items: center;
+    justify-content: center; /* center cards horizontally */
+    width: 100%;
+    height: auto; /* let content define height */
+    margin-bottom: 100px; /* reduce excessive margin */
+    gap: 0;
+  }
+  
   .feature-card {
-    width: 100px;
+    width: 45%; /* take nearly half the screen on mobile */
+    max-width: 77px; /* limit max width for larger screens */
     height: 200px;
-    margin-bottom: 20px;
+    margin: 10px; /* spacing between cards */
   }
-
   .feature-card img {
-    width: 50px;
-    height: 50px;
+    width: 45px;
+    height: 45px;
+  }
+  .feature-card h3{
+    font-size: 12px;
   }
   .feature-card p {
-    font-size: 12px;
+    font-size: 9px;
   }
   .feature-card1 {
     width: 100px;
@@ -808,12 +889,14 @@ body {
   /* Footer */
   .footer {
     text-align: center;
-    padding: 20px;
+    padding: 10px;
   }
-
+  .contact-column p {
+    font-size: 7px;
+  }
   .contact-column {
     text-align: center;
-    padding: 10px 0;
+    padding: 5px 0;
   }
 }
 

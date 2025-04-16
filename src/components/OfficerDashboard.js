@@ -45,7 +45,7 @@ const OfficerDashboard = () => {
   
         if (driverId) {
           // Check if driverId exists in the drivers' database
-          const driverResponse = await fetch(`http://192.168.1.32:3001/getDriverById2/${driverId}`);
+          const driverResponse = await fetch(`http://192.168.43.245:3001/getDriverById2/${driverId}`);
           if (driverResponse.ok) {
               console.log(`Driver found with id ${driverId}.`);
               navigate('/');
@@ -53,7 +53,7 @@ const OfficerDashboard = () => {
           }
   
           // If not found in drivers, check in officers' database
-          const officerResponse = await fetch(`http://192.168.1.32:3001/getOfficerById/${driverId}`);
+          const officerResponse = await fetch(`http://192.168.43.245:3001/getOfficerById/${driverId}`);
           if (officerResponse.ok) {
             const officerData = await officerResponse.json();
             // Navigate based on officer's role
@@ -319,7 +319,7 @@ const OfficerDashboard = () => {
   // Main fetch function
   const fetchRecords = useCallback(async () => {
     try {
-      const response = await axios.get("http://192.168.1.32:3001/getRecords");
+      const response = await axios.get("http://192.168.43.245:3001/getRecords");
   
       if (Array.isArray(response.data)) {
         const dataList = response.data.reverse(); // Reverse order if needed
@@ -490,7 +490,7 @@ const OfficerDashboard = () => {
     useEffect(() => {
       const fetchTrafficData = async () => {
         try {
-          const response = await axios.get("http://192.168.1.32:3001/traffic-data");
+          const response = await axios.get("http://192.168.43.245:3001/traffic-data");
           const data = response.data;
   
           console.log("Raw Data from API:", data);
@@ -698,8 +698,8 @@ const OfficerDashboard = () => {
                   {showLegend ? "Hide Legend" : "Show Legend"}
               </button>
             </div>
-           <div className="legendd">  
-              <Doughnut
+           <div className="legendd" ref={chartRef1} >  
+              <Doughnut 
                     data={{
                       labels: Object.keys(vehicleClassificationData),
                       datasets: [
@@ -780,7 +780,7 @@ const OfficerDashboard = () => {
                   {showLegend1 ? "Hide Legend" : "Show Legend"}
                 </button>
             </div>
-          <div className="legendd">
+          <div className="legendd" ref={chartRef1} >
             <Doughnut
                   data={{
                     labels: Object.keys(violationTypeData), // Dynamic labels based on violation types
@@ -839,7 +839,7 @@ const OfficerDashboard = () => {
         </div>
         <div className="line-chart-section">
          <div className="chartheader">
-            <h2 style={{textAlign:"center", fontSize:"18px"}}>Number of Violations per Barangay</h2>
+            <h2 style={{textAlign:"center"}}>Number of Violations per Barangay</h2>
             {/* Filters */}
             <div className="filters">
             <select

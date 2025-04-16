@@ -310,7 +310,7 @@ function CsvUploader({ onCsvUpload }) {
         
           for (let i = 0; i < chunks.length; i++) {
             const chunk = chunks[i];
-            const response = await axios.post('http://192.168.1.32:3001/csvUpload', { data: chunk });
+            const response = await axios.post('http://192.168.43.245:3001/csvUpload', { data: chunk });
         
             if (response.status !== 200) {
               allSuccessful = false;

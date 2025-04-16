@@ -18,7 +18,7 @@ const OfficerMap = () => {
   useEffect(() => {
     const fetchOfficers = async () => {
       try {
-        const response = await axios.get("http://192.168.1.32:3001/getOfficer");
+        const response = await axios.get("http://192.168.43.245:3001/getOfficer");
         const data = response.data;
         
         console.log("API Response:", data); // Debugging line

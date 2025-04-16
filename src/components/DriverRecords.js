@@ -139,7 +139,7 @@ const DriverRecords = () => {
 
   const fetchRecords = useCallback(async () => {
     try {
-      const response = await axios.get("http://192.168.1.32:3001/getRecords");
+      const response = await axios.get("http://192.168.43.245:3001/getRecords");
       if (Array.isArray(response.data)) {
         setRecords(response.data);  // Reverse order here
       } else {
@@ -170,7 +170,7 @@ const DriverRecords = () => {
                 return;
             }
             console.log( driverId);
-            const response = await axios.get(`http://192.168.1.32:3001/getDriver/${driverId}`);
+            const response = await axios.get(`http://192.168.43.245:3001/getDriver/${driverId}`);
             if (response.data) {
                 setDriveremail(response.data.email);
                 console.log("Fetched Officer Name:", response.data.email); 
@@ -187,7 +187,7 @@ const DriverRecords = () => {
 // Main fetch function
 const fetchData = async () => {
   try {
-    const response = await axios.get("http://192.168.1.32:3001/getRecords"); // ✅ Fetch records from MongoDB
+    const response = await axios.get("http://192.168.43.245:3001/getRecords"); // ✅ Fetch records from MongoDB
     const dataList = response.data;
 
     console.log("Fetched data:", response.data);
@@ -398,7 +398,7 @@ const currentRecords = finalSortedRecords.slice(indexOfFirstRecord, indexOfLastR
     useEffect(() => {
       const fetchSignature = async () => {
         try {
-          const response = await fetch(`http://192.168.1.32:3001/getSignature/${selectedRecord._id}`);
+          const response = await fetch(`http://192.168.43.245:3001/getSignature/${selectedRecord._id}`);
           console.log("id value",selectedRecord._id)
           if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);

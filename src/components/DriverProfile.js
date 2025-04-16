@@ -27,7 +27,7 @@ const DriverProfile = () => {
         return;
       }
       try {
-        const response = await fetch(`http://192.168.1.32:3001/getdriver/${driverId}`);
+        const response = await fetch(`http://192.168.43.245:3001/getdriver/${driverId}`);
         const data = await response.json();
         setDriverInfo(data);
 
@@ -52,7 +52,7 @@ const DriverProfile = () => {
 
     try {
       const driverId = localStorage.getItem("driverId");
-      const response = await fetch(`http://192.168.1.32:3001/updateProfilePic/${driverId}`, {
+      const response = await fetch(`http://192.168.43.245:3001/updateProfilePic/${driverId}`, {
         method: "POST",
         body: formData,
       });

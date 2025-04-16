@@ -69,11 +69,11 @@
           }
     
           // Get the admin details
-          const adminRes = await axios.get(`http://192.168.1.32:3001/getOfficerById/${adminId}`);
+          const adminRes = await axios.get(`http://192.168.43.245:3001/getOfficerById/${adminId}`);
           const adminAgency = adminRes.data.agency;
     
           // Get all officers
-          const response = await axios.get("http://192.168.1.32:3001/getOfficer");
+          const response = await axios.get("http://192.168.43.245:3001/getOfficer");
     
           // Filter officers based on matching agency
           const filteredByAgency = response.data.filter(officer => officer.agency === adminAgency);
@@ -119,7 +119,7 @@
           console.log("Updating assign for", officerId, "to", barangayName);
 
           try {
-            await axios.put("http://192.168.1.32:3001/updateAssign", {
+            await axios.put("http://192.168.43.245:3001/updateAssign", {
               id: officerId,
               assign: barangayName,
             });
@@ -130,7 +130,7 @@
         
         const updateOfficerDutyStatus = async (officerId, status) => {
           try {
-            await axios.put(`http://192.168.1.32:3001/updateOfficerDutyStatus/${officerId}`, {
+            await axios.put(`http://192.168.43.245:3001/updateOfficerDutyStatus/${officerId}`, {
               dutyStatus: status,
             });
           } catch (error) {

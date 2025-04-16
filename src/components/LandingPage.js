@@ -24,7 +24,7 @@ useEffect(() => {
 
       if (driverId) {
         // Check if driverId exists in the drivers' database
-        const driverResponse = await fetch(`http://192.168.1.32:3001/getDriverById2/${driverId}`);
+        const driverResponse = await fetch(`http://192.168.43.245:3001/getDriverById2/${driverId}`);
         if (driverResponse.ok) {
             console.log(`Driver found with id ${driverId}.`);
           
@@ -32,7 +32,7 @@ useEffect(() => {
         }
 
         // If not found in drivers, check in officers' database
-        const officerResponse = await fetch(`http://192.168.1.32:3001/getOfficerById/${driverId}`);
+        const officerResponse = await fetch(`http://192.168.43.245:3001/getOfficerById/${driverId}`);
         if (officerResponse.ok) {
           const officerData = await officerResponse.json();
           // Navigate based on officer's role
@@ -152,10 +152,11 @@ const openModal = (image, description, text) => {
                 <div className={localStorage.getItem("driverId") ? "logoheader" : "logoheader1"}>
                     <img src={iciT} alt="Logo" />
                 </div>
-                <h4 className="title">ILIGAN CITATION TICKET ONLINE</h4>
+                <h4 className="titlel1">ILIGAN CITATION TICKET ONLINE</h4>
                 <nav className={localStorage.getItem("driverId") ? "nav" : "navlan"}>
                     {localStorage.getItem("driverId") ? (
                     <>
+                    <div class="buton">
                         <a href="/">Home<FontAwesomeIcon icon={faHouse} style={{ marginLeft: "5px" }} /></a>
                         <a href="/Game">Game <FontAwesomeIcon icon={faGamepad} style={{ marginLeft: "5px" }} /></a>
                         <a href="/DriverDashboard">Profile<FontAwesomeIcon icon={faCircleUser} style={{ marginLeft: "5px" }} /></a>
@@ -167,6 +168,7 @@ const openModal = (image, description, text) => {
                         }}>
                         Logout
                         </button>
+                        </div>
                     </>
                     ) : (
                     <>
@@ -369,21 +371,21 @@ const openModal = (image, description, text) => {
                 </section>
                 
                 {/* Fines Section */}
-                <section id="features" ref={featuresRef} className="features">
+                <section id="feat" ref={featuresRef} className="feat">
                     <h2>Violation Fines and other charges</h2>
-                    <div className="features-intro">
+                    <div className="feat-intro">
                       <p style={{marginTop:"0px"}}>
                         Below is a summary of common traffic violations and their corresponding fines, categorized based on the issuing agency. These fines are implemented to promote road safety and discipline among drivers and pedestrians.
                       </p>
-                      <p className="features-source">
+                      <p className="feat-source">
                         <strong>Source:</strong> LTO Official Fines Matrix (<a href="https://portal.lto.gov.ph/ords/f?p=ELEARNING:HOME:111737969208391:::HOME:P1_ELEARN_TOPICS_FK:A9EDD4DC2A27AB72E0530D28780ACC4D" target="_blank" rel="noopener noreferrer">lto.gov.ph</a>), Iligan City Traffic Code (City Ordinance No. 02-4256), and PNP local enforcement guidelines.
                       </p>
 
                     </div>
                     <div className="section-divider"></div>
-                    <div className="features-grid">
+                    <div className="feat-grid">
                     {/* LTO Section */}
-                    <div className="feature-card1">
+                    <div className="feat-card1">
                       <h3>LTO</h3>
                       <ul>
                         <li><span>FAILURE TO CARRY OR/CR</span><span>₱150</span></li>
@@ -411,7 +413,7 @@ const openModal = (image, description, text) => {
                     </div>
 
                     {/* ICTPMO Section */}
-                    <div className="feature-card1">
+                    <div className="feat-card1">
                       <h3>ICTPMO & PNP</h3>
                       <ul>
                         <li><span>FAILURE TO CARRY OR/CR</span><span>₱500</span></li>
