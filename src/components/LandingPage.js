@@ -24,7 +24,7 @@ useEffect(() => {
 
       if (driverId) {
         // Check if driverId exists in the drivers' database
-        const driverResponse = await fetch(`http://192.168.43.245:3001/getDriverById2/${driverId}`);
+        const driverResponse = await fetch(`http://192.168.1.82:3001/getDriverById2/${driverId}`);
         if (driverResponse.ok) {
             console.log(`Driver found with id ${driverId}.`);
           
@@ -32,7 +32,7 @@ useEffect(() => {
         }
 
         // If not found in drivers, check in officers' database
-        const officerResponse = await fetch(`http://192.168.43.245:3001/getOfficerById/${driverId}`);
+        const officerResponse = await fetch(`http://192.168.1.82:3001/getOfficerById/${driverId}`);
         if (officerResponse.ok) {
           const officerData = await officerResponse.json();
           // Navigate based on officer's role
@@ -42,6 +42,9 @@ useEffect(() => {
           } else if (officerData.role === 'Officer') {
             console.log(`Officer found with id ${driverId}.`);
             navigate('/officerDashboard');
+          } else if (officerData.role === 'Treasurer') {
+            console.log(`Treasurer found with id ${driverId}.`);
+            navigate('/treasurerdashboard');
           } else {
             // Role not recognized; remove driverId and navigate to home
             localStorage.removeItem('driverId');

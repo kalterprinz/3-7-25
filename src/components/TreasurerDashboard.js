@@ -36,50 +36,53 @@ const TreasurerDashboard = () => {
   const [loading, setLoading] = useState(true);
   const canvasRef = useRef(null);
 
-    // useEffect(() => {
-    //   const checkAuthentication = async () => {
-    //     const driverId = localStorage.getItem('driverId');
+  useEffect(() => { 
+    const checkAuthentication = async () => {
+      const driverId = localStorage.getItem('driverId');
   
-    //     if (driverId) {
-    //       // Check if driverId exists in the drivers' database
-    //       const driverResponse = await fetch(`http://192.168.43.245:3001/getDriverById2/${driverId}`);
-    //       if (driverResponse.ok) {
-    //           console.log(`Driver found with id ${driverId}.`);
-    //           navigate('/');
-    //         return;
-    //       }
+      if (driverId) {
+        // Check if driverId exists in the drivers' database
+        const driverResponse = await fetch(`http://192.168.1.82:3001/getDriverById2/${driverId}`);
+        if (driverResponse.ok) {
+          console.log(`Driver found with id ${driverId}.`);
+          navigate('/');
+          return;
+        }
   
-    //       // If not found in drivers, check in officers' database
-    //       const officerResponse = await fetch(`http://192.168.43.245:3001/getOfficerById/${driverId}`);
-    //       if (officerResponse.ok) {
-    //         const officerData = await officerResponse.json();
-    //         // Navigate based on officer's role
-    //         if (officerData.role === 'Admin') {
-    //           console.log(`Admin found with id ${driverId}.`);
-              
-    //         } else if (officerData.role === 'Officer') {
-    //           console.log(`Officer found with id ${driverId}.`);
-    //           navigate('/officerDashboard');
-    //         } else {
-    //           // Role not recognized; remove driverId and navigate to home
-    //           localStorage.removeItem('driverId');
-    //           navigate('/');
-    //         }
-    //         return;
-    //       }
-    //     }
+        // If not found in drivers, check in officers' database
+        const officerResponse = await fetch(`http://192.168.1.82:3001/getOfficerById/${driverId}`);
+        if (officerResponse.ok) {
+          const officerData = await officerResponse.json();
+          // Navigate based on officer's role
+          if (officerData.role === 'Admin') {
+            console.log(`Admin found with id ${driverId}.`);
+            navigate('/adminDashboard');
+          } else if (officerData.role === 'Officer') {
+            console.log(`Officer found with id ${driverId}.`);
+            navigate('/officerDashboard');
+          } else if (officerData.role === 'Treasurer') {
+            console.log(`Treasurer found with id ${driverId}.`);
+          } else {
+            // Role not recognized; remove driverId and navigate to home
+            localStorage.removeItem('driverId');
+            navigate('/');
+          }
+          return;
+        }
+      }
   
-    //     // If driverId is not found in either database
-    //     localStorage.removeItem('driverId');
-    //     navigate('/');
-    //   };
+      // If driverId is not found in either database
+      localStorage.removeItem('driverId');
+      navigate('/');
+    };
   
-    //   checkAuthentication();
-    // }, [navigate]);
+    checkAuthentication();
+  }, [navigate]);
+  
 
   const fetchRecords = useCallback(async () => {
     try {
-      const response = await axios.get("http://192.168.43.245:3001/getRecords");
+      const response = await axios.get("http://192.168.1.82:3001/getRecords");
       if (response.signature && response.signature.data) {
         
       }
@@ -104,7 +107,7 @@ const TreasurerDashboard = () => {
 // Main fetch function
 const fetchData = async () => {
   try {
-    const response = await axios.get("http://192.168.43.245:3001/getRecords"); // ✅ Fetch records from MongoDB
+    const response = await axios.get("http://192.168.1.82:3001/getRecords"); // ✅ Fetch records from MongoDB
     const dataList = response.data;
 
     console.log("Fetched data:", response.data);
@@ -405,7 +408,7 @@ return (
                           </tr>
                         ) : currentRecords.length > 0 ? (
                           currentRecords.map((records) => (
-                            <tr key={records?._id}>
+                            <tr key={records?._id} className={records?.fineStatus === 'Unpaid' ? 'unpaid-row' : records?.fineStatus === 'Paid' ? 'paid-row' : ''}>
                               <td>{records?.ticketNumber}</td>
                               <td>{records?.dateOfApprehension ? records.dateOfApprehension.split("T")[0] : "N/A"}</td>
                               <td>{records?.nameOfDriver}</td>

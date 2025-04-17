@@ -51,7 +51,7 @@ useEffect(() => {
 
       if (driverId) {
         // Check if driverId exists in the drivers' database
-        const driverResponse = await fetch(`http://192.168.43.245:3001/getDriverById2/${driverId}`);
+        const driverResponse = await fetch(`http://192.168.1.82:3001/getDriverById2/${driverId}`);
         if (driverResponse.ok) {
             console.log(`Driver found with id ${driverId}.`);
             navigate('/');
@@ -59,7 +59,7 @@ useEffect(() => {
         }
 
         // If not found in drivers, check in officers' database
-        const officerResponse = await fetch(`http://192.168.43.245:3001/getOfficerById/${driverId}`);
+        const officerResponse = await fetch(`http://192.168.1.82:3001/getOfficerById/${driverId}`);
         if (officerResponse.ok) {
           const officerData = await officerResponse.json();
           // Navigate based on officer's role
@@ -69,6 +69,9 @@ useEffect(() => {
           } else if (officerData.role === 'Officer') {
             console.log(`Officer found with id ${driverId}.`);
             navigate('/officerDashboard');
+          } else if (officerData.role === 'Treasurer') {
+            console.log(`Treasurer found with id ${driverId}.`);
+            navigate('/treasurerdashboard');
           } else {
             // Role not recognized; remove driverId and navigate to home
             localStorage.removeItem('driverId');
@@ -327,7 +330,7 @@ const fetchCardData = async (dataList) => {
 // Main fetch function
 const fetchRecords = useCallback(async () => {
   try {
-    const response = await axios.get("http://192.168.43.245:3001/getRecords");
+    const response = await axios.get("http://192.168.1.82:3001/getRecords");
 
     if (Array.isArray(response.data)) {
       const dataList = response.data.reverse(); // Reverse order if needed
@@ -600,7 +603,7 @@ const formattedTime = currentDateTime.toLocaleTimeString();
   useEffect(() => {
     const fetchTrafficData = async () => {
       try {
-        const response = await axios.get("http://192.168.43.245:3001/traffic-data");
+        const response = await axios.get("http://192.168.1.82:3001/traffic-data");
         const data = response.data;
 
         console.log("Raw Data from API:", data);
@@ -1032,7 +1035,7 @@ const [selectedMonthForClearance, setSelectedMonthForClearance] = useState("");
 // Fetch clearances using fetch and set state correctly
 const fetchClearances = useCallback(async () => {
   try {
-    const response = await fetch("http://192.168.43.245:3001/getClearances");
+    const response = await fetch("http://192.168.1.82:3001/getClearances");
     const data = await response.json(); // Convert response to JSON
     if (Array.isArray(data)) {
       setClearances(data);  // Use the correct setter for clearances

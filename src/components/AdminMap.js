@@ -5,6 +5,7 @@ import iliganData from './iliganmap.json';
 import "./all.css";
 import "./OfficerDash.css";
 import "leaflet/dist/leaflet.css";
+import { useNavigate } from "react-router-dom";
 
 const OfficerMap = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -15,10 +16,56 @@ const OfficerMap = () => {
     setIsSidebarOpen((prev) => !prev);
   };
 
+  const navigate = useNavigate();
+
+  useEffect(() => {
+            const checkAuthentication = async () => {
+              const driverId = localStorage.getItem('driverId');
+        
+              if (driverId) {
+                // Check if driverId exists in the drivers' database
+                const driverResponse = await fetch(`http://192.168.1.82:3001/getDriverById2/${driverId}`);
+                if (driverResponse.ok) {
+                    console.log(`Driver found with id ${driverId}.`);
+                    navigate('/');
+                  return;
+                }
+        
+                // If not found in drivers, check in officers' database
+                const officerResponse = await fetch(`http://192.168.1.82:3001/getOfficerById/${driverId}`);
+                if (officerResponse.ok) {
+                  const officerData = await officerResponse.json();
+                  // Navigate based on officer's role
+                  if (officerData.role === 'Admin') {
+                    console.log(`Admin found with id ${driverId}.`);
+                    
+                  } else if (officerData.role === 'Officer') {
+                    console.log(`Officer found with id ${driverId}.`);
+                    navigate('/officerDashboard');
+                  } else if (officerData.role === 'Treasurer') {
+                    console.log(`Treasurer found with id ${driverId}.`);
+                    navigate('/treasurerdashboard');
+                  } else {
+                    // Role not recognized; remove driverId and navigate to home
+                    localStorage.removeItem('driverId');
+                    navigate('/');
+                  }
+                  return;
+                }
+              }
+        
+              // If driverId is not found in either database
+              localStorage.removeItem('driverId');
+              navigate('/');
+            };
+        
+            checkAuthentication();
+          }, [navigate]);
+
   useEffect(() => {
     const fetchOfficers = async () => {
       try {
-        const response = await axios.get("http://192.168.43.245:3001/getOfficer");
+        const response = await axios.get("http://192.168.1.82:3001/getOfficer");
         const data = response.data;
         
         console.log("API Response:", data); // Debugging line

@@ -20,7 +20,7 @@ const Calendar = () => {
         }
 
         // Fetch driver details to get email
-        const driverResponse = await fetch(`http://192.168.43.245:3001/getDriver/${driverId}`);
+        const driverResponse = await fetch(`http://192.168.1.82:3001/getDriver/${driverId}`);
         const driverData = await driverResponse.json();
         const driverEmail = driverData?.email;
 
@@ -30,7 +30,7 @@ const Calendar = () => {
         }
 
         // Fetch all records
-        const response = await fetch('http://192.168.43.245:3001/getRecords');
+        const response = await fetch('http://192.168.1.82:3001/getRecords');
         const data = await response.json();
 
         // Filter records matching the driver's email and unpaid status

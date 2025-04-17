@@ -118,7 +118,7 @@ const QrCodeScanner = () => {
     
           if (driverId) {
             // Check if driverId exists in the drivers' database
-            const driverResponse = await fetch(`http://192.168.43.245:3001/getDriverById2/${driverId}`);
+            const driverResponse = await fetch(`http://192.168.1.82:3001/getDriverById2/${driverId}`);
             if (driverResponse.ok) {
                 console.log(`Driver found with id ${driverId}.`);
                 navigate('/');
@@ -126,7 +126,7 @@ const QrCodeScanner = () => {
             }
     
             // If not found in drivers, check in officers' database
-            const officerResponse = await fetch(`http://192.168.43.245:3001/getOfficerById/${driverId}`);
+            const officerResponse = await fetch(`http://192.168.1.82:3001/getOfficerById/${driverId}`);
             if (officerResponse.ok) {
               const officerData = await officerResponse.json();
               // Navigate based on officer's role
@@ -136,6 +136,9 @@ const QrCodeScanner = () => {
               } else if (officerData.role === 'Officer') {
                 console.log(`Officer found with id ${driverId}.`);
                 
+              } else if (officerData.role === 'Treasurer') {
+                console.log(`Treasurer found with id ${driverId}.`);
+                navigate('/treasurerdashboard');
               } else {
                 // Role not recognized; remove driverId and navigate to home
                 localStorage.removeItem('driverId');
@@ -162,7 +165,7 @@ const QrCodeScanner = () => {
 
       console.log("Getting officer by ID:", storedId);
 
-      const response = await fetch(`http://192.168.43.245:3001/getOfficerById/${storedId}`);
+      const response = await fetch(`http://192.168.1.82:3001/getOfficerById/${storedId}`);
       if (!response.ok) {
         throw new Error(`Failed to fetch officer info: ${response.status}`);
       }
@@ -190,7 +193,7 @@ const QrCodeScanner = () => {
 
 const getDriverInfo = async () => {
   try {
-    const response = await fetch(`http://192.168.43.245:3001/getdriver/${driverId}`);
+    const response = await fetch(`http://192.168.1.82:3001/getdriver/${driverId}`);
     
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
@@ -217,7 +220,7 @@ console.log(driverInfo.email);
 
 const fetchViolationHistory = async () => {
   try {
-    const response = await fetch(`http://192.168.43.245:3001/getrecordemail/${driverInfo.email}`);
+    const response = await fetch(`http://192.168.1.82:3001/getrecordemail/${driverInfo.email}`);
     
     if (!response.ok) {
       throw new Error(`Failed to fetch records: ${response.status}`);
@@ -411,7 +414,7 @@ useEffect(() => {
 
   const fetchRecords = useCallback(async () => {
       try {
-        const response = await axios.get("http://192.168.43.245:3001/getRecords");
+        const response = await axios.get("http://192.168.1.82:3001/getRecords");
         if (Array.isArray(response.data)) {
           setRecords(response.data);  // Reverse order here
         } else {
@@ -580,7 +583,7 @@ const handleSubmit = async (e) => {
 
   try {
     console.log("Submitting form data:", formState); // Log form data
-      const response = await fetch("http://192.168.43.245:3001/addRecord", { 
+      const response = await fetch("http://192.168.1.82:3001/addRecord", { 
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(recordData),

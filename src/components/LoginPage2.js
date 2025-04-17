@@ -20,7 +20,7 @@ const LoginPage2 = () => {
 
     try {
       console.log("Payload:", { email, password });
-      const response = await axios.post("http://192.168.43.245:3001/login2", {
+      const response = await axios.post("http://192.168.1.82:3001/login2", {
         email,
         password,
       });

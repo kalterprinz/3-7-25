@@ -23,7 +23,7 @@ const Sidebar = () => {
       if (!driverId) return;
 
       try {
-        const res = await axios.get(`http://192.168.43.245:3001/getOfficerById/${driverId}`);
+        const res = await axios.get(`http://192.168.1.82:3001/getOfficerById/${driverId}`);
         setAdminAgency(res.data.agency);
       } catch (error) {
         console.error("Failed to fetch admin agency:", error);

@@ -70,7 +70,7 @@ const Signup = () => {
     }
   
     try {
-      const response = await axios.post("http://192.168.43.245:3001/signup", submissionData, {
+      const response = await axios.post("http://192.168.1.82:3001/signup", submissionData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
   
