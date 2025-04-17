@@ -153,7 +153,7 @@ const OfficerTable = () => {
       formData.append("conNum", conNum);
       formData.append("email", email);
       formData.append("agency", agency);
-      formData.append("assign", assign);
+      formData.append("assign", assign ? assign : null);
       const dutyStatus = "Off Duty";
       formData.append("dutyStatus", dutyStatus);
       formData.append("password", password);
