@@ -7,6 +7,35 @@
     padding: 20px 70px 80px 70px;
   }
   
+  .header1 { 
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1px 2rem;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    width: 96%;
+    z-index: 2;
+    }
+    .headerdriver1 { 
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 3px 2rem;
+      background-color: #fff;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      position: fixed;
+      width: 96%;
+      z-index: 2;
+      }
+    
+    .logoheader img {
+      height: 45px;
+      width: 45px;
+      margin-top: 2px;
+    margin-bottom: -4px;
+    }
   .page-header {
     text-align: center;
     padding: 40px 20px 20px 20px;
@@ -218,3 +247,105 @@
     padding: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
+
+  
+  /* Driver Side */
+  @media (min-width: 360px) and (max-width: 768px) {
+    .headerdriver1{
+      flex-direction: row;
+      padding: 15px 0;
+      width: -webkit-fill-available;
+      height: 25px;
+      display: flex;
+      flex-wrap: nowrap;
+      align-content: center;
+      justify-content: center;
+      align-items: center;	
+    }
+    
+    .titled1{
+      font-size: 10px;
+      position: absolute;
+      top: 8px; /* Adjust for better alignment with the logo */
+      left: -35px; /* Adjust based on the logo's size and desired spacing */
+      color: #05223e; /* Make sure it contrasts well on mobile */
+      justify-content: center;
+      align-items:flex-end ;
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: 800;
+      margin-left: 87px;
+      letter-spacing: -0.5px;
+      }
+      .nav {
+      display: flex;
+      justify-content: center;
+      width: 35%;
+      font-size: 10px;
+      margin-right: inherit;
+      margin-left: auto;
+      gap: 0;
+      align-items: flex-start;
+      align-content: stretch;
+      }
+      .buton {
+      margin-bottom: 8px;
+      font-size: 8px;
+      margin-right: 0;
+      margin-top: 4px;
+      width: 18px;
+      display: contents;
+      }
+      .page-header h1 {
+        font-size: 2rem;
+      }
+      .page-header p {
+        font-size: 0.8em;
+      }
+      .elearning-container {
+        padding: 22px 15px 20px 15px;
+      }
+      .page-header {
+        margin: 32px -15px 15px -15px;
+      }
+      .elearning-container h2 {
+        font-size: 16px;
+      }
+      .elearning-container h3 {
+        font-size: 15px;
+        margin-top: 30px;
+      }
+      .category-buttons {
+        gap: 5px;
+        font-size: 10px;
+        margin-bottom: 25px;
+      }
+      .category-button 
+      {
+        padding: 4px;
+      }
+      .elearning-materials {
+        gap: 10px;
+        margin: -5px 10px;
+      }
+      .material-card {
+        padding: 10px;
+      }
+      .material-card p {
+        font-size: 12px;
+      }
+      .elearning-materials3 {
+        gap: 10px;
+        margin: 0px;
+      }
+      .material-card3 {
+        padding: 10px;
+      }    
+      .material-card a {
+        padding: 5px;
+        font-size: 10px;
+
+    }
+          
+      
+  
+    }

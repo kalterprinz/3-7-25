@@ -19,7 +19,7 @@ useEffect(() => {
 
       if (driverId) {
         // Check if driverId exists in the drivers' database
-        const driverResponse = await fetch(`http://192.168.1.82:3001/getDriverById2/${driverId}`);
+        const driverResponse = await fetch(`http://localhost:3001/getDriverById2/${driverId}`);
         if (driverResponse.ok) {
             console.log(`Driver found with id ${driverId}.`);
           
@@ -27,7 +27,7 @@ useEffect(() => {
         }
 
         // If not found in drivers, check in officers' database
-        const officerResponse = await fetch(`http://192.168.1.82:3001/getOfficerById/${driverId}`);
+        const officerResponse = await fetch(`http://localhost:3001/getOfficerById/${driverId}`);
         if (officerResponse.ok) {
           const officerData = await officerResponse.json();
           // Navigate based on officer's role
@@ -59,7 +59,7 @@ useEffect(() => {
 
   // Function to handle button click
   const handleProfileClick = () => {
-    navigate("/DriverProfile");  // Navigate to the profile page
+    navigate("/DriverDashboard");  // Navigate to the profile page
   };
   const handleLogout = () => {
     localStorage.removeItem("token");
@@ -763,24 +763,32 @@ useEffect(() => {
       document.body.removeChild(script);
     };
   }, []);
+
   return (
     <div>
       {/* Header */}
-      <header className="headerG">
-        <div className="logoheader">
-          <img src={iciT} alt="Logo" />
-        </div>
-        <h4 className="title">ILIGAN CITATION TICKET ONLINE</h4>
-        <nav className="nav">
-            <a href="/">Home<FontAwesomeIcon icon={faHouse} style={{marginLeft:"5"}}  /></a>
-            <a href="Game">Game <FontAwesomeIcon icon={faGamepad} style={{marginLeft:"5"}}  /></a>
-            <a href="DriverDashboard">Profile<FontAwesomeIcon icon={faCircleUser} style={{marginLeft:"5"}} /></a>
-           |
-          <button className="logoutBtn" onClick={handleLogout}>
-            Logout
-          </button>
-        </nav>
-      </header>
+      <header className={localStorage.getItem("driverId") ? "headerdriver" : "headerlan"}>
+                <div className="logoheader">
+                    <img src={iciT} alt="Logo" />
+                </div>
+                <h4 className="titled1">ILIGAN CITATION TICKET ONLINE</h4>
+                <nav className="nav">
+                    <div class="buton">
+                        <a href="/">Home<FontAwesomeIcon icon={faHouse} style={{ marginLeft: "5px" }} /></a>
+                        <a href="/Game">Game <FontAwesomeIcon icon={faGamepad} style={{ marginLeft: "5px" }} /></a>
+                        <a href="/DriverDashboard">Profile<FontAwesomeIcon icon={faCircleUser} style={{ marginLeft: "5px" }} /></a>
+                        |
+                        <button className="logoutBtn" onClick={() => {
+                        localStorage.removeItem("token");
+                        localStorage.removeItem("driverId");
+                        window.location.reload();
+                        }}>
+                        Logout
+                        </button>
+                        </div>
+                  </nav>
+                </header>
+
 
       <div className="elearning-container">
         {/* Page Title */}

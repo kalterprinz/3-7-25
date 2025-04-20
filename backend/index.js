@@ -105,7 +105,7 @@ function startBackendInstance() {
   app.use(bodyParser.json());
 
   // Connect to MongoDB
-  mongoose.connect('mongodb://192.168.1.82:27017/thesis')
+  mongoose.connect('mongodb://localhost:27017/thesis')
     .then(() => console.log('DB is connected'))
     .catch(err => console.error('Connection error:', err));
 

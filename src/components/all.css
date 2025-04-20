@@ -38,7 +38,12 @@
 	margin: 2px 0px -4px 30px;
   }
   .title{
-	margin-left: 90px;
+	text-align: left;
+	margin-left: 6%;
+	color: #05223e;
+	position: absolute;
+    font-family: fantasy;
+    font-weight: lighter;
  }
 
   
@@ -1519,7 +1524,14 @@ background-color: #023d7d;
 		margin: 0 0.1rem;
 		}	
 	.logoutBtn {
-		font-size: 12px;
+		font-size: 10px;
+        margin-left: -3px;
+        display: flex;
+        flex-direction: row;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+    
 	}
 	.logoheader img {
 		position: absolute; /* or fixed */
@@ -1541,13 +1553,16 @@ background-color: #023d7d;
 	}
 	.title {
 		margin-left: 115px;
-        font-size: 12px;
+        font-size: 10px;
         font-weight: 800;
         font-family: Arial, Helvetica, sans-serif;
         display: contents;
 	}
+	.headerG {
+		justify-content: start;
+	}
 	.navDriver{
-		font-size: 12px;
+		font-size: 10px;
 		font-weight: bolder;
 		margin: 0 -20px 0 25px;
 	}
@@ -1571,6 +1586,7 @@ background-color: #023d7d;
 	.banner{
 		margin: 0px 0px 0px -11px;
         width: 107%;
+		display: none;
 	}
 	.ofdate{
 		justify-content: flex-start;
@@ -1634,7 +1650,7 @@ background-color: #023d7d;
 		margin-left:210px;
 	}
 	.sidebar.open + .main-section1{
-		margin-left: 23px;
+		margin-left: 30px;
 	}
 	.legend-buttonad{
 		font-size:10px;
@@ -1705,30 +1721,14 @@ background-color: #023d7d;
 	.signature-canvas {
 	width: 270px;
 	}
-	.map-page2 {
-		padding: 15px 0px;	
-		width: fit-content;
-		margin-left: -5px;
+	.main-section2 {
+		padding: 50px 10px 0px 60px;
 	}
-	.leaflet-container12 {
-		width: 85%;
-	}
-	.mapdes {
-		width: 100%;
-        padding: 1px 0px 10px 0px;
-	}
-	.mapdes h2 {
-		font-size: 14px;
-		margin: 8px 14px 5px 20px;
-	}
-	.map-container1 {
-		margin-left: -45px;
-	}
-	.mapdes1 p {
-		padding: 12px;
+	.records-officer thead {
+		height: 35px;
 	}
 	
-
+	
 
   }
   /* @media (min-width: 1360px) and (max-width: 1920px) {

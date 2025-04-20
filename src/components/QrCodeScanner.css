@@ -308,8 +308,8 @@
   cursor: pointer;
 }
 
-.buttonqr:hover, .buttonqrupload:hover {
-  background: #0056b3;
+.buttonqr:hover, .buttonqrupload:hover, .button:hover {
+  background: #0c6598;
 }
 
 .modalqr div p {
@@ -397,4 +397,66 @@ height: auto;
 .scanned-data{
   padding: 0px 10px;
   padding-bottom: initial;
+}
+
+@media (min-width: 360px) and (max-width: 768px)  {
+  .sidebar.open + .main-section2 {
+		margin-left: 6px;
+    margin-right: 8px;
+	}  
+  .sidebar.closed + .main-section2 {
+		margin-left: -13%;
+    margin-right: 25px;
+	}  
+
+.outerContainer {
+  margin-left: 25px;
+  margin-top: 0px;
+  margin-right: 48px;
+}
+.contentWrapper {
+  flex-direction: column;
+  width: 126%;
+}
+.descriptionBox {
+  line-height: 0px;
+  height: 125px;
+  width: -webkit-fill-available;
+  display: flex;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  flex-direction: column;
+  align-content: center;
+  justify-content: space-between;
+  align-items: center;
+}
+.containerqr {
+  padding: 2px;
+  width: inherit;
+}
+.descriptionBox p {
+  font-size: 14px;
+  padding: 5px;
+  margin-top: 15px;
+}
+.descriptionBox ul {
+  margin-left: -30px;
+}
+.descriptionBox li {
+  line-height: 18px;
+  font-size: 14px;
+}
+.newBox {
+  width: auto;
+}
+.scannerBox {
+  width: auto;
+  height: 250px;
+}
+.button {
+  padding: 8px 15px;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
 }

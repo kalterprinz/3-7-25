@@ -352,13 +352,13 @@
 	}
 	.title {
 		margin-left: 115px;
-        font-size: 12px;
+        font-size: 10px;
         font-weight: 800;
         font-family: Arial, Helvetica, sans-serif;
         display: contents;
 	}
 	.navDriver{
-		font-size: 12px;
+		font-size: 10px;
 		font-weight: bolder;
 		margin: 0 -20px 0 25px;
 	}
@@ -381,7 +381,8 @@
 	}
 	.banner{
 		margin: 0px 0px 0px -11px;
-        width: 107%;
+    width: 107%;
+    display: none;
 	}
 	.ofdate{
 		justify-content: flex-start;
@@ -430,7 +431,7 @@
 		justify-content: center;
 		align-items: center;
 		padding:25px 8px 35px 8px;
-		height:200px;
+		height:215px;
 		margin-bottom:35px;
 	}
 	.line-chart-section h2{
@@ -440,13 +441,12 @@
 	.chartheader {
 		gap: 5px;
 		margin-bottom: 10px;
+    flex-direction: column;
 	}
 	.nvb{
 		margin-left:210px;
 	}
-	.sidebar.open + .main-section1{
-		margin-left: 23px;
-	}
+	
 	.legend-buttonad{
 		font-size:10px;
 		padding: 5px 8px;
@@ -517,26 +517,39 @@
     width: 270px;
   }
   .map-page2 {
-		padding: 15px 0px;	
+		padding: 10px 0px;	
 		width: fit-content;
 		margin-left: -5px;
 	}
 	.leaflet-container12 {
-		width: 85%;
+		width: 83.5%;
 	}
 	.mapdes {
 		width: 100%;
-        padding: 1px 0px 10px 0px;
+    padding: 6px 0px 14px 0px;
 	}
 	.mapdes h2 {
 		font-size: 14px;
 		margin: 8px 14px 5px 20px;
 	}
 	.map-container1 {
-		margin-left: -45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    margin-left: -49px;
 	}
+  .mapdes1 {
+    height: 105px;
+  }
   .mapdes1 p {
-		padding: 12px;
+		padding: 15px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+	}
+  .sidebar.open + .map-container1{
+		margin-left: -49px;
 	}
 	
 

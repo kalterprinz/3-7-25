@@ -66,7 +66,7 @@
       
             if (driverId) {
               // Check if driverId exists in the drivers' database
-              const driverResponse = await fetch(`http://192.168.1.82:3001/getDriverById2/${driverId}`);
+              const driverResponse = await fetch(`http://localhost:3001/getDriverById2/${driverId}`);
               if (driverResponse.ok) {
                   console.log(`Driver found with id ${driverId}.`);
                   navigate('/');
@@ -74,7 +74,7 @@
               }
       
               // If not found in drivers, check in officers' database
-              const officerResponse = await fetch(`http://192.168.1.82:3001/getOfficerById/${driverId}`);
+              const officerResponse = await fetch(`http://localhost:3001/getOfficerById/${driverId}`);
               if (officerResponse.ok) {
                 const officerData = await officerResponse.json();
                 // Navigate based on officer's role
@@ -115,11 +115,11 @@
           }
     
           // Get the admin details
-          const adminRes = await axios.get(`http://192.168.1.82:3001/getOfficerById/${adminId}`);
+          const adminRes = await axios.get(`http://localhost:3001/getOfficerById/${adminId}`);
           const adminAgency = adminRes.data.agency;
     
           // Get all officers
-          const response = await axios.get("http://192.168.1.82:3001/getOfficer");
+          const response = await axios.get("http://localhost:3001/getOfficer");
     
           // Filter officers based on matching agency
           const filteredByAgency = response.data.filter(officer => officer.agency === adminAgency);
@@ -165,7 +165,7 @@
           console.log("Updating assign for", officerId, "to", barangayName);
 
           try {
-            await axios.put("http://192.168.1.82:3001/updateAssign", {
+            await axios.put("http://localhost:3001/updateAssign", {
               id: officerId,
               assign: barangayName,
             });
@@ -176,7 +176,7 @@
         
         const updateOfficerDutyStatus = async (officerId, status) => {
           try {
-            await axios.put(`http://192.168.1.82:3001/updateOfficerDutyStatus/${officerId}`, {
+            await axios.put(`http://localhost:3001/updateOfficerDutyStatus/${officerId}`, {
               dutyStatus: status,
             });
           } catch (error) {

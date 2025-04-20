@@ -395,16 +395,21 @@ tbody tr:last-child td:first-child {
   /* Driver Side */
   @media (min-width: 360px) and (max-width: 768px) {
 	.headerdriver{
-		flex-direction: column;
-		padding: 10px 0;
+		flex-direction: row;
+		padding: 15px 0;
 		width: -webkit-fill-available;
 		height: 25px;
+		display: flex;
+		flex-wrap: nowrap;
+		align-content: center;
+		justify-content: center;
+		align-items: center;	
 	}
 	
 	.title1{
 		font-size: 10px;
 		position: absolute;
-		top: 4px; /* Adjust for better alignment with the logo */
+		top: 8px; /* Adjust for better alignment with the logo */
 		left: -40px; /* Adjust based on the logo's size and desired spacing */
 		color: #05223e; /* Make sure it contrasts well on mobile */
 		justify-content: center;
@@ -415,12 +420,14 @@ tbody tr:last-child td:first-child {
 	  }
 	  .nav {
 		display: flex;
-		flex-direction: row; /* Stack items vertically */
-		justify-content: flex-start; /* Align items at the top */
-		width: 30%; /* Ensure the nav takes full width */
-		margin-right: -190px;
+		justify-content: center;
+		width: 35%;
+		font-size: 10px;
+		margin-right: inherit;
+		margin-left: auto;
 		gap: 0;
-		align-items: flex-start ;
+		align-items: flex-start;
+		align-content: stretch;
 	  }
 	  .buton {
 		margin-bottom: 8px;

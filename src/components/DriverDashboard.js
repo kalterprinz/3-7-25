@@ -43,7 +43,7 @@ const DriverDashboard = () => {
    
          if (driverId) {
            // Check if driverId exists in the drivers' database
-           const driverResponse = await fetch(`http://192.168.1.82:3001/getDriverById2/${driverId}`);
+           const driverResponse = await fetch(`http://localhost:3001/getDriverById2/${driverId}`);
            if (driverResponse.ok) {
                console.log(`Driver found with id ${driverId}.`);
              
@@ -51,7 +51,7 @@ const DriverDashboard = () => {
            }
    
            // If not found in drivers, check in officers' database
-           const officerResponse = await fetch(`http://192.168.1.82:3001/getOfficerById/${driverId}`);
+           const officerResponse = await fetch(`http://localhost:3001/getOfficerById/${driverId}`);
            if (officerResponse.ok) {
              const officerData = await officerResponse.json();
              // Navigate based on officer's role
@@ -118,7 +118,7 @@ const DriverDashboard = () => {
   useEffect(() => {
     const fetchTrafficData = async () => {
       try {
-        const response = await axios.get("http://192.168.1.82:3001/traffic-data");
+        const response = await axios.get("http://localhost:3001/traffic-data");
         const data = response.data;
 
         console.log("Raw Data from API:", data);
@@ -312,7 +312,7 @@ const fetchDoughnutData = async () => {
     }
 
     // Fetch driver details to get email
-    const driverResponse = await fetch(`http://192.168.1.82:3001/getDriver/${driverId}`);
+    const driverResponse = await fetch(`http://localhost:3001/getDriver/${driverId}`);
     const driverData = await driverResponse.json();
     const driverEmail = driverData?.email;
 
@@ -322,7 +322,7 @@ const fetchDoughnutData = async () => {
     }
 
     // Fetch all records
-    const response = await fetch("http://192.168.1.82:3001/getRecords");
+    const response = await fetch("http://localhost:3001/getRecords");
     const data = await response.json();
 
     // Filter records to include only violations committed by the logged-in driver
@@ -544,13 +544,13 @@ useEffect(() => {
     try {
       if (!driverId) return;
 
-      const driverRes = await fetch(`http://192.168.1.82:3001/getDriver/${driverId}`);
+      const driverRes = await fetch(`http://localhost:3001/getDriver/${driverId}`);
       const driverData = await driverRes.json();
       const driverEmail = driverData?.email;
 
       if (!driverEmail) return;
 
-      const recordsRes = await fetch("http://192.168.1.82:3001/getRecords");
+      const recordsRes = await fetch("http://localhost:3001/getRecords");
       const allRecords = await recordsRes.json();
 
       const driverRecords = allRecords.filter(record => record.email === driverEmail);
@@ -604,7 +604,7 @@ useEffect(() => {
       }
 
       // Fetch driver details to get email
-      const driverResponse = await fetch(`http://192.168.1.82:3001/getDriver/${driverId}`);
+      const driverResponse = await fetch(`http://localhost:3001/getDriver/${driverId}`);
       const driverData = await driverResponse.json();
       const driverEmail = driverData?.email;
 
@@ -614,7 +614,7 @@ useEffect(() => {
       }
 
       // Fetch all records
-      const response = await fetch("http://192.168.1.82:3001/getRecords");
+      const response = await fetch("http://localhost:3001/getRecords");
       const data = await response.json();
 
       // Filter records for the logged-in driver

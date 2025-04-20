@@ -140,7 +140,7 @@ const AdminDashboard = () => {
   
         if (driverId) {
           // Check if driverId exists in the drivers' database
-          const driverResponse = await fetch(`http://192.168.1.82:3001/getDriverById2/${driverId}`);
+          const driverResponse = await fetch(`http://localhost:3001/getDriverById2/${driverId}`);
           if (driverResponse.ok) {
               console.log(`Driver found with id ${driverId}.`);
               navigate('/');
@@ -148,7 +148,7 @@ const AdminDashboard = () => {
           }
   
           // If not found in drivers, check in officers' database
-          const officerResponse = await fetch(`http://192.168.1.82:3001/getOfficerById/${driverId}`);
+          const officerResponse = await fetch(`http://localhost:3001/getOfficerById/${driverId}`);
           if (officerResponse.ok) {
             const officerData = await officerResponse.json();
             // Navigate based on officer's role
@@ -183,7 +183,7 @@ const [signature, setSignature] = useState(null);
 
   const fetchRecords = useCallback(async () => {
     try {
-      const response = await axios.get("http://192.168.1.82:3001/getRecords");
+      const response = await axios.get("http://localhost:3001/getRecords");
       if (response.signature && response.signature.data) {
         
       }
@@ -411,7 +411,7 @@ const handleFineUpdate = async (recordId) => {
 
     // Call the API to update the record. Adjust the endpoint if needed.
     const response = await axios.put(
-      `http://192.168.1.82:3001/editRecords/${recordId}`,
+      `http://localhost:3001/editRecords/${recordId}`,
       updateData,
       { headers: { "Content-Type": "application/json" } }
     );
@@ -453,7 +453,7 @@ const handleFineUpdate = async (recordId) => {
 
       // Update the record on the backend. Adjust the endpoint as needed.
       const response = await axios.put(
-        `http://192.168.1.82:3001/editRecords/${recordId}`,
+        `http://localhost:3001/editRecords/${recordId}`,
         updateData,
         { headers: { "Content-Type": "application/json" } }
       );
@@ -493,7 +493,7 @@ const handleFineUpdate = async (recordId) => {
 
       // Update the record on the backend. Adjust the endpoint as needed.
       const response = await axios.put(
-        `http://192.168.1.82:3001/editRecords/${recordId}`,
+        `http://localhost:3001/editRecords/${recordId}`,
         updateData,
         { headers: { "Content-Type": "application/json" } }
       );
@@ -698,7 +698,7 @@ const fetchCardData = async (dataList) => {
 // Main fetch function
 const fetchData = async () => {
   try {
-    const response = await axios.get("http://192.168.1.82:3001/getRecords"); // ✅ Fetch records from MongoDB
+    const response = await axios.get("http://localhost:3001/getRecords"); // ✅ Fetch records from MongoDB
     const dataList = response.data;
 
     console.log("Fetched data:", response.data);
@@ -760,7 +760,7 @@ const handleDelete = async (recordId) => {
   if (!confirmDelete) return;
 
   try {
-    const response = await fetch(`http://192.168.1.82:3001/deleteRecord/${recordId}`, {
+    const response = await fetch(`http://localhost:3001/deleteRecord/${recordId}`, {
       method: 'DELETE',
     });
 
@@ -841,7 +841,7 @@ const handleDelete = async (recordId) => {
   
     try {
       console.log("Submitting form data:", formState); // Log form data
-        const response = await fetch("http://192.168.1.82:3001/addRecord", { 
+        const response = await fetch("http://localhost:3001/addRecord", { 
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(recordData),
@@ -949,7 +949,7 @@ const handleDelete = async (recordId) => {
   
   const handleSignature = async (records) => {
     try {
-      const response = await fetch(`http://192.168.1.82:3001/getSignature/${records._id}`);
+      const response = await fetch(`http://localhost:3001/getSignature/${records._id}`);
   
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
@@ -1036,7 +1036,7 @@ const handleUpdate = async (e) => {
   };
 
   try {
-    const response = await axios.put(`http://192.168.1.82:3001/editRecords/${selectedData._id}`, updatedData, {
+    const response = await axios.put(`http://localhost:3001/editRecords/${selectedData._id}`, updatedData, {
       headers: {
         "Content-Type": "application/json",
       },
@@ -1098,7 +1098,7 @@ const handlePaidUpdate = async () => {
   try {
     // Send a PUT request to update the record by its _id
     const response = await axios.put(
-      `http://192.168.1.82:3001/editRecords/${selectedData._id}`,
+      `http://localhost:3001/editRecords/${selectedData._id}`,
       updateData,
       { headers: { "Content-Type": "application/json" } }
     );

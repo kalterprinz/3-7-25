@@ -553,13 +553,13 @@ body {
   
   @media (max-width: 1024px) {
     .contact-info {
-      grid-template-columns: repeat(2, 1fr); /* 2 columns on medium screens */
+      grid-template-columns: repeat(4, 1fr); /* 2 columns on medium screens */
     }
   }
   
   @media (max-width: 768px) {
     .contact-info {
-      grid-template-columns: 1fr; /* 1 column on small screens */
+      grid-template-columns: repeat(4, 1fr); /* 2 columns on medium screens */
       text-align: left;
     }
   }
@@ -576,7 +576,7 @@ body {
   /* Header */
   .headerlan {
     flex-direction: column;
-    padding: 10px 0;
+    padding: 10px 5px;
     width: -webkit-fill-available;
     height: 25px;
   }
@@ -592,48 +592,55 @@ body {
   .titlel1{
     font-size: 10px;
     position: absolute;
-    top: 4px; /* Adjust for better alignment with the logo */
-    left: -40px; /* Adjust based on the logo's size and desired spacing */
+    top: 8px; /* Adjust for better alignment with the logo */
+    left: -35px; /* Adjust based on the logo's size and desired spacing */
     color: #05223e; /* Make sure it contrasts well on mobile */
     justify-content: center;
     align-items:flex-end ;
     font-family: Arial, Helvetica, sans-serif;
-    font-weight: bold;
+    font-weight: 800;
     margin-left: 87px;
+    letter-spacing: -0.5px;
   }
 
   .navlan {
     display: flex;
-    flex-direction: row; /* Stack items vertically */
-    justify-content: flex-start; /* Align items at the top */
-    width: 30%; /* Ensure the nav takes full width */
-    margin-right: -150px;
+    justify-content: center;
+    width: 35%;
+    font-size: 10px;
+    margin-right: inherit;
+    margin-left: auto;
     gap: 0;
-    align-items: flex-start ;
-    /* align-items: center; Center the navigation items */
-  }
-
-  
-  .navlan button {
-    margin-bottom: 8px;
-    font-size: 8px;
-    margin-right: 0;
-    margin-top: 4px;
-    width: 18px;
-  }
+    align-items: flex-start;
+    align-content: stretch;
+}
+.navlan button {
+  /* margin-bottom: 8px; */
+  font-size: 10px;
+  /* margin-right: 12px; */
+  /* margin-top: 4px; */
+  width: 28px;
+  display: flex
+;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}
 
   .navlan a {
-    font-size: 8px;
+    font-size: 10px;
     margin-left: 15px;
   }
   .navlan .login-button {
-    width: 30%;
-    text-align: center;
-    padding: 5px;
-    padding-bottom: 5px;
-    font-size: 12px;
-    margin-left: 30px;
-  }
+    /* width: 30%; */
+    /* text-align: center; */
+    /* padding: 5px 10px; */
+    /* padding-bottom: 5px; */
+    /* font-size: 10px; */
+    /* margin-left: 32px; */
+    display: none;
+}
 
   /* Hero */
   .hero {
@@ -657,7 +664,7 @@ body {
 
   /* About Section */
   .about p {
-    margin: 10px 15px;
+    margin: 10px 15px 0px 10px;
     font-size: 12px;
   }
 
@@ -666,6 +673,10 @@ body {
     flex-wrap: wrap;
     align-items: flex-start;
     margin: 10px;
+    gap: 20px;
+  }
+  .about-text{
+    width: -webkit-fill-available;
     gap: 20px;
   }
   
@@ -703,7 +714,7 @@ body {
   .about-container {
     flex-direction: column; /* stack vertically */
     width: -webkit-fill-available;
-
+    gap: 10px;
   }
 
   .left-section {
@@ -721,16 +732,28 @@ body {
   }
   .right-section {
     order: 2;
-    width: -webkit-fill-available;    /* Adjusted width */
+    width: -webkit-fill-available;
     padding: 10px;
+    display: flex;
+    flex-direction: row;
+    align-content: flex-start;
+    justify-content: center;
+    align-items: center;
 }
+
 .about-box-container {
   display: flex;
   flex-direction: row;
-  flex-wrap: nowrap;
-  margin-right: 0;width: 309px;
-  max-width: 471px;
-  height: 100px;
+  flex-wrap: wrap;
+  /* margin-right: 0; */
+  /* width: 233px; */
+  /* max-width: 369px; */
+  /* height: 100px; */
+  align-content: center;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: -15px;
+  gap: 10px;
 }
 
 .about-box {
@@ -740,11 +763,12 @@ body {
   text-align: center;
   width: 100px;
   height: 140px;
-  margin-left: -30px;
   box-sizing: border-box;
-  padding: 10px;
+  padding: 8px 5px;
   background-color: #f5f5f5; /* optional for visibility */
   border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .image-container {
@@ -764,6 +788,8 @@ body {
   font-size: 10px;
   color: #333;
   margin-top: 5px;
+  text-align: center;
+  line-height: 14px;
 }
   /* Modal */
   .modal1 {
@@ -793,7 +819,7 @@ body {
   /* Features Section */
   .features {
     width:-webkit-fill-available;
-    margin-top:40px;
+    margin-top:10px;
   }
   .feat {
     width:-webkit-fill-available;
@@ -825,10 +851,9 @@ body {
     align-items: center;
     justify-content: center; /* center cards horizontally */
     width: 100%;
-    margin-top: 10px;
     height: auto; /* let content define height */
     gap: 0;
-    /* margin-bottom: 100px; reduce excessive margin */
+    margin-top: 0px;
   }
   .feat-card1 {
     width: 100%; /* take nearly half the screen on mobile */
@@ -839,15 +864,22 @@ body {
   }
   .feat-card1 h3 {
     font-size: 20px;
+    text-align: center;
+    font-weight: bolder;
+    margin-top: 5px;
+    margin-bottom: 5px;
   }
   .feat-card1 ul li {
     font-size: 10px;
   }
   .feat-intro {
-    font-size: 12px;
+    font-size: 11px;
+    padding: 1rem 1.5rem;
+    text-align: justify;
   }
   .feat-intro p {
     font-size: 11px;
+    line-height: normal;
   }
   .features-grid {
     display: flex;
@@ -857,15 +889,15 @@ body {
     justify-content: center; /* center cards horizontally */
     width: 100%;
     height: auto; /* let content define height */
-    margin-bottom: 100px; /* reduce excessive margin */
-    gap: 0;
+    margin: 10px 0px 90px 0px;
+        gap: 0;
   }
   
   .feature-card {
-    width: 45%; /* take nearly half the screen on mobile */
-    max-width: 77px; /* limit max width for larger screens */
+    width: 50%;
+    max-width: 85px;
     height: 200px;
-    margin: 10px; /* spacing between cards */
+    margin: 5px;
   }
   .feature-card img {
     width: 45px;
@@ -892,7 +924,7 @@ body {
     padding: 10px;
   }
   .contact-column p {
-    font-size: 7px;
+    font-size: 5px;
   }
   .contact-column {
     text-align: center;

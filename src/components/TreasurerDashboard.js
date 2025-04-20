@@ -42,7 +42,7 @@ const TreasurerDashboard = () => {
   
       if (driverId) {
         // Check if driverId exists in the drivers' database
-        const driverResponse = await fetch(`http://192.168.1.82:3001/getDriverById2/${driverId}`);
+        const driverResponse = await fetch(`http://localhost:3001/getDriverById2/${driverId}`);
         if (driverResponse.ok) {
           console.log(`Driver found with id ${driverId}.`);
           navigate('/');
@@ -50,7 +50,7 @@ const TreasurerDashboard = () => {
         }
   
         // If not found in drivers, check in officers' database
-        const officerResponse = await fetch(`http://192.168.1.82:3001/getOfficerById/${driverId}`);
+        const officerResponse = await fetch(`http://localhost:3001/getOfficerById/${driverId}`);
         if (officerResponse.ok) {
           const officerData = await officerResponse.json();
           // Navigate based on officer's role
@@ -82,7 +82,7 @@ const TreasurerDashboard = () => {
 
   const fetchRecords = useCallback(async () => {
     try {
-      const response = await axios.get("http://192.168.1.82:3001/getRecords");
+      const response = await axios.get("http://localhost:3001/getRecords");
       if (response.signature && response.signature.data) {
         
       }
@@ -107,7 +107,7 @@ const TreasurerDashboard = () => {
 // Main fetch function
 const fetchData = async () => {
   try {
-    const response = await axios.get("http://192.168.1.82:3001/getRecords"); // ✅ Fetch records from MongoDB
+    const response = await axios.get("http://localhost:3001/getRecords"); // ✅ Fetch records from MongoDB
     const dataList = response.data;
 
     console.log("Fetched data:", response.data);

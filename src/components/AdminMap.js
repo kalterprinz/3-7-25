@@ -24,7 +24,7 @@ const OfficerMap = () => {
         
               if (driverId) {
                 // Check if driverId exists in the drivers' database
-                const driverResponse = await fetch(`http://192.168.1.82:3001/getDriverById2/${driverId}`);
+                const driverResponse = await fetch(`http://localhost:3001/getDriverById2/${driverId}`);
                 if (driverResponse.ok) {
                     console.log(`Driver found with id ${driverId}.`);
                     navigate('/');
@@ -32,7 +32,7 @@ const OfficerMap = () => {
                 }
         
                 // If not found in drivers, check in officers' database
-                const officerResponse = await fetch(`http://192.168.1.82:3001/getOfficerById/${driverId}`);
+                const officerResponse = await fetch(`http://localhost:3001/getOfficerById/${driverId}`);
                 if (officerResponse.ok) {
                   const officerData = await officerResponse.json();
                   // Navigate based on officer's role
@@ -65,7 +65,7 @@ const OfficerMap = () => {
   useEffect(() => {
     const fetchOfficers = async () => {
       try {
-        const response = await axios.get("http://192.168.1.82:3001/getOfficer");
+        const response = await axios.get("http://localhost:3001/getOfficer");
         const data = response.data;
         
         console.log("API Response:", data); // Debugging line
